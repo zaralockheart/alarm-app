@@ -71,7 +71,7 @@ class AlarmFragment : Fragment(), OnClickListener {
                 val position = viewHolder.absoluteAdapterPosition
                 homeViewModel.delete(alarmAdapter.currentList[position])
                 alarmAdapter.notifyItemRemoved(position)
-                AlarmUtilities.cancelAlarm(requireContext(), alarmAdapter.currentList[position].uid)
+                AlarmUtilities.cancelAllAlarm(requireContext(), alarmAdapter.currentList[position].uid)
             }
         }
 
@@ -99,7 +99,7 @@ class AlarmFragment : Fragment(), OnClickListener {
         homeViewModel.update(alarm.copy(enabled = if (state) 0 else 1))
         if (state) {
             homeViewModel.update(alarm.copy(enabled = 0))
-            AlarmUtilities.cancelAlarm(requireContext(), alarm.uid)
+            AlarmUtilities.cancelAllAlarm(requireContext(), alarm.uid)
             return
         }
         val selectedTime = Calendar.getInstance()

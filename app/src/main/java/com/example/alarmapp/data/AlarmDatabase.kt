@@ -25,13 +25,13 @@ data class AlarmEntity(
     @ColumnInfo(name = "sound") val sound: String,
     @ColumnInfo(name = "enabled") val enabled: Int?,
     @ColumnInfo(name = "vibrate") val vibrate: Boolean,
-    @ColumnInfo(name = "mon") val mon: Boolean?,
-    @ColumnInfo(name = "tue") val tue: Boolean?,
-    @ColumnInfo(name = "wed") val wed: Boolean?,
-    @ColumnInfo(name = "thu") val thu: Boolean?,
-    @ColumnInfo(name = "fri") val fri: Boolean?,
-    @ColumnInfo(name = "sat") val sat: Boolean?,
-    @ColumnInfo(name = "sun") val sun: Boolean?,
+    @ColumnInfo(name = "mon") val mon: Boolean = false,
+    @ColumnInfo(name = "tue") val tue: Boolean =false,
+    @ColumnInfo(name = "wed") val wed: Boolean =false,
+    @ColumnInfo(name = "thu") val thu: Boolean =false,
+    @ColumnInfo(name = "fri") val fri: Boolean = false,
+    @ColumnInfo(name = "sat") val sat: Boolean = false,
+    @ColumnInfo(name = "sun") val sun: Boolean = false,
 )
 
 @Dao

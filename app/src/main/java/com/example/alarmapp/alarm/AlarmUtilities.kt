@@ -6,6 +6,7 @@ import android.content.Context
 import android.content.Intent
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import com.example.alarmapp.data.AlarmEntity
 import java.util.*
 
 /**
@@ -50,7 +51,12 @@ object AlarmUtilities {
         )
     }
 
-    fun cancelAlarm(context: Context, id: Int) {
+    fun cancelAllAlarm(context: Context, id: Int) {
+        cancelAlarm(context, id)
+        cancelRepeatAlarm(context, id)
+    }
+
+    private fun cancelAlarm(context: Context, id: Int) {
         val alarmIntent = Intent(context, AlarmReceiver::class.java)
         val pendingIntent = PendingIntent.getBroadcast(
             context, id, alarmIntent,
@@ -59,5 +65,19 @@ object AlarmUtilities {
         val alarmManager =
             context.getSystemService(AppCompatActivity.ALARM_SERVICE) as AlarmManager
         alarmManager.cancel(pendingIntent)
+    }
+
+    private fun cancelRepeatAlarm(context: Context, id: Int) {
+        mapOf(
+            "AHD" to Calendar.SUNDAY,
+            "ISN" to Calendar.MONDAY,
+            "SEL" to Calendar.TUESDAY,
+            "RAB" to Calendar.WEDNESDAY,
+            "KHA" to Calendar.THURSDAY,
+            "JUM" to Calendar.FRIDAY,
+            "SAB" to Calendar.SATURDAY
+        ).forEach{
+            cancelAlarm(context, id + it.value)
+        }
     }
 }

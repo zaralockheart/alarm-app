@@ -1,6 +1,6 @@
 package com.example.alarmapp.ui.setalarm
 
-import android.R
+import android.R.color
 import android.app.Activity
 import android.app.TimePickerDialog
 import android.content.Intent
@@ -69,14 +69,14 @@ class SetAlarmActivity : AppCompatActivity() {
             val field = resources.getIdentifier(
                 it.key.lowercase(),
                 "id", packageName
-            );
+            )
             findViewById<Button>(field).setOnClickListener { v ->
                 if (repeatDays.contains(it.value)) {
                     repeatDays.remove(it.value)
                     v.setBackgroundColor(Color.parseColor("#F5F5F5"))
                 } else {
                     repeatDays.add(it.value)
-                    v.setBackgroundColor(resources.getColor(R.color.holo_purple))
+                    v.setBackgroundColor(resources.getColor(color.holo_purple))
                 }
             }
         }
