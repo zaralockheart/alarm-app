@@ -43,7 +43,7 @@ object AlarmUtilities {
         }
         Log.e("setRepeatAlarm2", calendar.timeInMillis.toString())
         val alarmManager = context.getSystemService(AppCompatActivity.ALARM_SERVICE) as AlarmManager
-        alarmManager.setInexactRepeating(
+        alarmManager.setRepeating(
             AlarmManager.RTC_WAKEUP,
             calendar.timeInMillis,
             AlarmManager.INTERVAL_DAY * 7,
